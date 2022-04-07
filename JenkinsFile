@@ -1,12 +1,12 @@
 node('jenkins-slave') {
     
-     stage('test pipeline') {
+     stage('Test Pipeline') {
         sh(script: """
-            echo "hello"
-           git clone https://github.com/marcel-dempers/docker-development-youtube-series.git
-           cd ./docker-development-youtube-series/golang
+            echo "Testing dotnet build image example"
+           git clone https://github.com/addisuICS325/dotnet-example.git
            
-           docker build . -t test
+           docker build -t aspnetapp .
+           docker run -it --rm -p 8000:80 aspnetapp
         """)
     }
 }

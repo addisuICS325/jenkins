@@ -5,8 +5,8 @@ node('jenkins-slave') {
             echo "Testing dotnet build image example"
            git clone https://github.com/addisuICS325/dotnet-example.git
            
-           docker build -t aspnetapp .
-           docker run -it --rm -p 8000:80 aspnetapp
+           docker build -t test/employeesapp:1.0 .
+           docker run -it --rm -p 8000:80 test/employeesapp:1.0
         """)
     }
 }

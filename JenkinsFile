@@ -4,6 +4,7 @@ node('jenkins-slave') {
         sh(script: """
             echo "Testing dotnet build image example"
            git clone https://github.com/addisuICS325/dotnet-example.git
+           cd ./dotnet-example
            
            docker build -t test/employeesapp:1.0 .
            docker run -it --rm -p 8000:80 test/employeesapp:1.0

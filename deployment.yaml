@@ -16,15 +16,8 @@ spec:
       serviceAccount: jenkins-admin
       containers:
       - name: jenkins
-        image: jenkins/jenkins:lts
+        image: jenkins/jenkins:lts-alpine
         imagePullPolicy: IfNotPresent
-        resources:
-          limits:
-            memory: "2Gi"
-            cpu: "1000m"
-          requests:
-            memory: "500Mi"
-            cpu: "500m"
         env:
         - name: JAVA_OPTS
           value: -Xmx2048m -Dhudson.slaves.NodeProvisioner.MARGIN=50 -Dhudson.slaves.NodeProvisioner.MARGIN0=0.85

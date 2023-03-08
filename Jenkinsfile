@@ -11,10 +11,9 @@ pipeline {
           sh '''
               echo "hello"
               git clone https://gitlab.com/devops1400/dotnet6example.git
-              dir('todowebapisample') {
-                 sh 'dotnet restore'
-                 sh 'dotnet build'
-              }
+              cd /todowebapisample
+              sh 'dotnet restore'
+              sh 'dotnet build'
            '''
        }
     }

@@ -6,7 +6,7 @@ pipeline {
 
         stage('Clone repository') {
             steps {
-                git clone https://gitlab.com/devops1400/dotnet6example.git
+                git branch: 'main', url: clone 'https://gitlab.com/devops1400/dotnet6example.git'
             }
         }
         stage('Build') {

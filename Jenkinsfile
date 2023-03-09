@@ -1,20 +1,20 @@
 pipeline {
-    agent {
-        docker {image 'mcr.microsoft.com/dotnet/sdk:5.0' }
-    }
-    stages {
-
-        stage('Clone repository') {
-            steps {
-                git branch: 'main', url: clone 'https://gitlab.com/devops1400/dotnet6example.git'
-            }
+  agent any
+  stages {
+    stage('test pipeline') {
+      agent {
+        node {
+          label 'jenkins-slave'
         }
-        stage('Build') {
-            steps {
-                dir('dotnet6example/todowebapisample') {
-                    sh 'docker build -t todowebapisample:latest f Dockerfile -t .'
-                }
-            }
-        }
+      }
+      steps {
+        sh '''
+          echo "hello"
+          git clone https://github.com/marcel-dempers/docker-development-youtube-series.git
+          cd ./docker-development-youtube-series/golang
+          docker build . -t test
+        '''
+      }
     }
+  }
 }
